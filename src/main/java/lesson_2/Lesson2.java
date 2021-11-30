@@ -49,5 +49,4 @@ public class Lesson2 {
             return false;
         }
     }
-
 }
