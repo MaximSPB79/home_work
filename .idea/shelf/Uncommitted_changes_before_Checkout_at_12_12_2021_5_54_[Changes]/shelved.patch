@@ -1,0 +1,24 @@
+Index: src/main/java/lesson_5/Employee.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package lesson_5;\r\n\r\npublic class Employee {  // поля класса\r\n    private String fullName;\r\n    private String position;\r\n    private String eMail;\r\n    private String telephone;\r\n    private int salary;\r\n    private int age;\r\n\r\n    Employee(String employeeName, String employeePosition, String employeeEmail, String employeeTelephone,\r\n             int employeeSalary, int employeeAge) { // конструктор\r\n\r\n        this.fullName = employeeName;\r\n        this.position = employeePosition;\r\n        this.eMail = employeeEmail;\r\n        this.telephone = employeeTelephone;\r\n        this.salary = employeeSalary;\r\n        this.age = employeeAge;\r\n    }\r\n\r\n\r\n    public void info() { // метод класса\r\n        System.out.println(\"ФИО: \" + fullName + \"\\nДолжность: \" + position + \"\\nПочта: \" + eMail + \"\\nТелефон: \"\r\n                + telephone + \"\\nЗарплата: \" + salary + \"руб. \\nВозраст:\" + age + \"\\n \");\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n\r\n        Employee[] employeesArray = new Employee[5]; // создаем обьекты класса\r\n        employeesArray[0] = new Employee(\"Михайлов Михаил Михайлович\", \"Генеральный директор\",\r\n                \"mih@mail.ru\", \"+79998887777\", 1500000, 56);\r\n        employeesArray[1] = new Employee(\"Денисов Денис Дениссович\", \"Исполнительный директор\",\r\n                \"din@mail.ru\", \"+79998886666\", 500000, 50);\r\n        employeesArray[2] = new Employee(\"Исаков Валентин Петрович\", \"Старший менеджер\",\r\n                \"val@mail.ru\", \"+79998885555\", 150000, 48);\r\n        employeesArray[3] = new Employee(\"Куликова Зинаида Федоровна\", \"Специалист по клинингу\",\r\n                \"fed@mail.ru\", \"+79998884444\", 30000, 35);\r\n        employeesArray[4] = new Employee(\"Дядя Вася\", \"Вахтер\",\r\n                \"vas@mail.ru\", \"+79998883333\", 25000, 75);\r\n        System.out.println(\"Сотрудники компании:\\n\");\r\n\r\n        for (int i = 0; i < employeesArray.length; i++) { // выводим информацио о сотрудниках в консоль\r\n            employeesArray[i].info();\r\n        }\r\n\r\n        System.out.println(\"Информация о самых зрелых сотрудниках, кому за 40:\\n\");\r\n        for (int i = 0; i < employeesArray.length; i++) {\r\n            if (employeesArray[i].age > 40) {\r\n                employeesArray[i].info();\r\n            }\r\n        }\r\n        System.out.println(\"Молодеж, вами займемся позже!\");\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/lesson_5/Employee.java b/src/main/java/lesson_5/Employee.java
+--- a/src/main/java/lesson_5/Employee.java	
++++ b/src/main/java/lesson_5/Employee.java	
+@@ -10,13 +10,12 @@
+ 
+     Employee(String employeeName, String employeePosition, String employeeEmail, String employeeTelephone,
+              int employeeSalary, int employeeAge) { // конструктор
+-
+-        this.fullName = employeeName;
++       /* this.fullName = employeeName;
+         this.position = employeePosition;
+         this.eMail = employeeEmail;
+         this.telephone = employeeTelephone;
+         this.salary = employeeSalary;
+-        this.age = employeeAge;
++        this.age = employeeAge;*/
+     }
+ 
+ 

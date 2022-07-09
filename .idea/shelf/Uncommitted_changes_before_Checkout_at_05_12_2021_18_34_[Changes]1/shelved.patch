@@ -1,0 +1,341 @@
+Index: src/main/java/main/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main;\r\n\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/main/Main.java b/src/main/java/main/Main.java
+--- a/src/main/java/main/Main.java	
++++ b/src/main/java/main/Main.java	
+@@ -1,7 +1,28 @@
+ package main;
+ 
++import java.util.Arrays;
++
+ public class Main {
+     public static void main(String[] args) {
+ 
++        max();
++
+     }
++
++    private static void max() {
++        int[] arr = {1, 2, 3, 4};
++        int[] arr0 = new int[4];
++        for (int i = 0; i < arr.length; i++) {
++            arr0[i] = arr[arr.length - i];
++//        arr0[1] = arr[2];
++//        arr0[2] = arr[1];
++//        arr0[3] = arr[0];
++
++
++            System.out.println(Arrays.toString(arr0));
++        }
++    }
++
++
+ }
++
+Index: src/main/java/lesson_3/Lesson_3.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/lesson_3/Lesson_3.java b/src/main/java/lesson_3/Lesson_3.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/lesson_3/Lesson_3.java	
+@@ -0,0 +1,146 @@
++package lesson_3;
++
++import org.jetbrains.annotations.NotNull;
++import org.w3c.dom.ls.LSOutput;
++
++import java.util.Arrays;
++
++public class Lesson_3 {
++    public static void main(String[] args) {
++
++
++        changeNumbers();
++        System.out.println();
++
++        creating100();
++        System.out.println();
++
++        multiplyNumbers();
++        System.out.println();
++
++        makingSquare();
++        System.out.println();
++
++
++        System.out.println(Arrays.toString(returnsArray(12, 5)));
++        System.out.println();
++
++        findingMinMaxNumbers();
++        System.out.println();
++
++        int[] mass = {1, 2, 3, 7, 5, 8, 10};
++        System.out.println(arrBalance(mass));
++        System.out.println();
++
++
++        int[] arr = {1, 2, 3, 4};
++        movingArray(arr, 1);
++    }
++
++    private static void changeNumbers() {
++        int[] numbers = {1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0,};
++        System.out.println(Arrays.toString(numbers));
++        System.out.println("Меняем нули на единички. Вуаля...");
++        for (int i = 0; i < numbers.length; i++) {
++            if (numbers[i] == 1) {
++                numbers[i] = 0;
++            } else numbers[i] = 1;
++        }
++        System.out.println(Arrays.toString(numbers));
++    }
++
++    private static void creating100() {
++        System.out.println("Это просто массив из 100 чисел");
++        int[] weaving = new int[100];
++        for (int i = 0; i < weaving.length; i++) {
++            weaving[i] = i + 1;
++        }
++        System.out.println(Arrays.toString(weaving));
++    }
++
++    private static void multiplyNumbers() {
++        System.out.println("Исходный массив:");
++        int[] nambers = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
++        System.out.println(Arrays.toString(nambers));
++        System.out.println("Числа, которые меньше 6, умножим на 2:");
++        for (int i = 0; i < nambers.length; i++) {
++            if (nambers[i] < 6) {
++                nambers[i] = nambers[i] * 2;
++            }
++        }
++        System.out.println(Arrays.toString(nambers));
++    }
++
++
++    private static void makingSquare() {
++        System.out.println("Сделаем диагонали из единичек.");
++        System.out.println();
++        int[][] square = new int[8][8];
++        for (int i = 0; i < square.length; i++) {
++            square[i][i] = 1;
++            square[i][square.length - 1 - i] = 1;
++        }
++        for (int i = 0; i < square.length; i++) {
++            for (int j = 0; j < square.length; j++)
++                System.out.print(square[i][j] + "  ");
++            System.out.println();
++
++        }
++    }
++
++    private static int @NotNull [] returnsArray(int len, int initalValue) {
++        System.out.println("Возвратим массив:");
++        System.out.println();
++        int[] arr = new int[len];
++        for (int i = 0; i < arr.length; i++) {
++            arr[i] = initalValue;
++        }
++        return arr;
++    }
++
++    private static void findingMinMaxNumbers() {
++        int[] num = {0, 12, 56, -45, 458, -78, 25, 36, 99};
++        int numMax = 0; // Инициализируем переменные, чтобы запустился цикл
++        int numMin = 0;
++        for (int i = 0; i < num.length; i++) {
++            if (num[i] > numMax) {
++                numMax = num[i];
++            }
++            if (num[i] < numMin) {
++                numMin = num[i];
++            }
++        }
++        System.out.println("Максимальное число в массиве " + numMax);
++        System.out.println("Минимальное число в массиве " + numMin);
++    }
++
++    private static boolean arrBalance(int[] mass) {
++        for (int i = 0; i < mass.length; i++) {
++            int sum = 0;
++            for (int j = 0; j < i; j++) {
++                sum = sum + mass[j];
++            }
++            for (int j = i; j < mass.length; j++) {
++                sum = sum - mass[j];
++            }
++            if (sum == 0)
++                return true;
++        }
++        return false;
++    }
++
++    private static void movingArray(int[] arr, int shift) {
++
++        int buf = arr[0];
++
++        for (int i = 0; i < arr.length - 1; i++) {
++            arr[i] = arr[i + 1];
++        }
++        arr[arr.length - 1] = buf;
++        System.out.println(Arrays.toString(arr));
++
++    }
++}
++
++
++
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/jarRepositories.xml	
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://repo.maven.apache.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/compiler.xml	
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <annotationProcessing>
++      <profile name="Maven default annotation processors profile" enabled="true">
++        <sourceOutputDir name="target/generated-sources/annotations" />
++        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
++        <outputRelativeToContentRoot value="true" />
++        <module name="home_work" />
++      </profile>
++    </annotationProcessing>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/misc.xml	
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="17" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gitignore b/gitignore
+new file mode 100644
+--- /dev/null	
++++ b/gitignore	
+@@ -0,0 +1,2 @@
++.idea/
++*.xml
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+new file mode 100644
+--- /dev/null	
++++ b/pom.xml	
+@@ -0,0 +1,42 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>org.example</groupId>
++    <artifactId>home_work</artifactId>
++    <version>1.0-SNAPSHOT</version>
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-compiler-plugin</artifactId>
++                <configuration>
++                    <source>16</source>
++                    <target>16</target>
++                </configuration>
++            </plugin>
++        </plugins>
++    </build>
++    <dependencies>
++        <dependency>
++            <groupId>org.jetbrains</groupId>
++            <artifactId>annotations</artifactId>
++            <version>RELEASE</version>
++            <scope>compile</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.jetbrains</groupId>
++            <artifactId>annotations</artifactId>
++            <version>RELEASE</version>
++            <scope>compile</scope>
++        </dependency>
++    </dependencies>
++
++    <properties>
++        <maven.compiler.source>17</maven.compiler.source>
++        <maven.compiler.target>17</maven.compiler.target>
++    </properties>
++
++</project>
+\ No newline at end of file

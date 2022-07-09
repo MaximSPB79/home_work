@@ -8,7 +8,6 @@ import java.util.Arrays;
 public class Lesson_3 {
     public static void main(String[] args) {
 
-
         changeNumbers();
         System.out.println();
 
@@ -34,7 +33,7 @@ public class Lesson_3 {
 
 
         int[] arr = {1, 2, 3, 4};
-        movingArray(arr, 1);
+        movingArray(arr, 3);
     }
 
     private static void changeNumbers() {
@@ -130,14 +129,15 @@ public class Lesson_3 {
     }
 
     private static void movingArray(int[] arr, int shift) {
+        for (int n = 0; n < shift; n++) {
+            int buf = arr[0];
 
-        int buf = arr[0];
-
-        for (int i = 0; i < arr.length - 1; i++) {
-            arr[i] = arr[i + 1];
+            for (int i = 0; i < arr.length - 1; i++) {
+                arr[i] = arr[i + 1];
+            }
+            arr[arr.length - 1] = buf;
         }
-        arr[arr.length - 1] = buf;
-        System.out.println(Arrays.toString(arr));
+            System.out.println(Arrays.toString(arr));
 
     }
 }
